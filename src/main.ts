@@ -1,8 +1,17 @@
+import otelSDK from './tracing/otel-sdk';
 import { NestFactory } from '@nestjs/core';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { SecurityHeadersService } from './security/headers/security-headers.service';
+import { ValidationPipe } from '@nestjs/common';
+import { ThrottlerGuard } from '@nestjs/throttler';
 
 async function bootstrap() {
+  // Start the OpenTelemetry SDK
+  await otelSDK.start();
+
   const app = await NestFactory.create(AppModule);
+
   
   // Enable CORS
   app.enableCors({
@@ -13,9 +22,5 @@ async function bootstrap() {
   // API prefix
   app.setGlobalPrefix('api');
   
-  const port = process.env.PORT ?? 3000;
-  await app.listen(port);
-  console.log(`Application is running on: http://localhost:${port}`);
-  console.log(`API available at: http://localhost:${port}/api`);
-}
+
 bootstrap();

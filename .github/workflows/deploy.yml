@@ -43,7 +43,6 @@ jobs:
     - name: Install dependencies
       run: |
         npm ci --production=false
-        npm install @nestjs/swagger @nestjs/config @nestjs/terminus class-validator class-transformer
       
     - name: Run linting
       run: npm run lint
