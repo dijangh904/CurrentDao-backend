@@ -9,7 +9,7 @@ export class AppController {
 
   @Get()
   @ApiOperation({ summary: 'Get hello message' })
-  getHello(): string {
+  getHello(): { message: string; timestamp: string; version: string } {
     return this.appService.getHello();
   }
 
