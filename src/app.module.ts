@@ -19,6 +19,7 @@ import { ContractsModule } from './contracts/contracts.module';
 import { ApiGatewayModule } from './gateway/api-gateway.module';
 import { MultisigModule } from './multisig/multisig.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
+import { SentimentModule } from './sentiment/sentiment.module';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 
@@ -50,6 +51,7 @@ import { HttpExceptionFilter } from './common/filters/http-exception.filter';
     ApiGatewayModule,
     MultisigModule,
     MonitoringModule,
+    SentimentModule,
   ],
   controllers: [AppController, HealthController],
   providers: [
