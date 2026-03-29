@@ -21,6 +21,8 @@ import { MonitoringModule } from './monitoring/monitoring.module';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { FraudDetectionModule } from './fraud/fraud-detection.module';
+import { SyncModule } from './sync/sync.module';
+import { LoggingModule } from './logging/logging.module';
 
 @Module({
   imports: [
@@ -40,6 +42,8 @@ import { FraudDetectionModule } from './fraud/fraud-detection.module';
     ApiGatewayModule,
     MonitoringModule,
     FraudDetectionModule,
+    SyncModule,
+    LoggingModule,
   ],
   controllers: [AppController, HealthController],
   providers: [
