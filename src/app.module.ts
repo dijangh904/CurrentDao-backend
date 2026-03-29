@@ -20,6 +20,8 @@ import { ApiGatewayModule } from './gateway/api-gateway.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { ValidationExceptionFilter } from './common/filters/validation.filter';
+import { ValidationPipe } from './common/pipes/validation.pipe';
 import { FraudDetectionModule } from './fraud/fraud-detection.module';
 import { SyncModule } from './sync/sync.module';
 import { LoggingModule } from './logging/logging.module';
@@ -50,6 +52,11 @@ import { LoggingModule } from './logging/logging.module';
     AppService,
     ResponseInterceptor,
     HttpExceptionFilter,
+    ValidationExceptionFilter,
+    {
+      provide: 'APP_PIPE',
+      useClass: ValidationPipe,
+    },
   ],
 })
 export class AppModule { }
