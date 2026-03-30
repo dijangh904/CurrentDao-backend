@@ -18,6 +18,7 @@ import { ShardingModule } from './database/sharding/sharding.module';
 import { ContractsModule } from './contracts/contracts.module';
 import { ApiGatewayModule } from './gateway/api-gateway.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
+import { SentimentModule } from './sentiment/sentiment.module';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { FraudDetectionModule } from './fraud/fraud-detection.module';
@@ -41,6 +42,7 @@ import { LoggingModule } from './logging/logging.module';
     ContractsModule,
     ApiGatewayModule,
     MonitoringModule,
+    SentimentModule,
     FraudDetectionModule,
     SyncModule,
     LoggingModule,
