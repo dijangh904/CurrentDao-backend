@@ -21,13 +21,16 @@ import { ShardingModule } from './database/sharding/sharding.module';
 import { ContractsModule } from './contracts/contracts.module';
 import { ApiGatewayModule } from './gateway/api-gateway.module';
 import { MonitoringModule } from './monitoring/monitoring.module';
+import { SentimentModule } from './sentiment/sentiment.module';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { ValidationExceptionFilter } from './common/filters/validation.filter';
 import { ValidationPipe } from './common/pipes/validation.pipe';
 import { FraudDetectionModule } from './fraud/fraud-detection.module';
+import { PredictiveBalancingModule } from './balancing/predictive-balancing.module';
 import { SyncModule } from './sync/sync.module';
 import { LoggingModule } from './logging/logging.module';
+import { SettingsModule } from './settings/settings.module';
 
 @Module({
   imports: [
@@ -46,34 +49,14 @@ import { LoggingModule } from './logging/logging.module';
     ContractsModule,
     ApiGatewayModule,
     MonitoringModule,
+    SentimentModule,
     FraudDetectionModule,
+    PredictiveBalancingModule,
     SyncModule,
     LoggingModule,
+    SettingsModule,
   ],
   controllers: [AppController, HealthController],
-  providers: [
-    AppService,
-    ResponseInterceptor,
-    HttpExceptionFilter,
-    ValidationExceptionFilter,
-    {
-      provide: 'APP_PIPE',
-      useClass: ValidationPipe,
-    },
-  ],
+  providers: [AppService, ResponseInterceptor, HttpExceptionFilter],
 })
-export class AppModule {
-  configure(consumer: MiddlewareConsumer) {
-    // Apply helmet security middleware
-    consumer.apply(helmetMiddleware()).forRoutes('*');
-    
-    // Apply custom security middleware
-    consumer
-      .apply(SecurityMiddleware)
-      .forRoutes('*');
-    
-    // Validate configurations on startup
-    validateCorsConfig();
-    validateSecurityConfig();
-  }
-}
+export class AppModule {}
