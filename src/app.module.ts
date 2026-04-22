@@ -31,6 +31,7 @@ import { PredictiveBalancingModule } from './balancing/predictive-balancing.modu
 import { SyncModule } from './sync/sync.module';
 import { LoggingModule } from './logging/logging.module';
 import { SettingsModule } from './settings/settings.module';
+import { CurrencyModule } from './currency/currency.module';
 
 @Module({
   imports: [
@@ -55,8 +56,9 @@ import { SettingsModule } from './settings/settings.module';
     SyncModule,
     LoggingModule,
     SettingsModule,
+    CurrencyModule,
   ],
   controllers: [AppController, HealthController],
   providers: [AppService, ResponseInterceptor, HttpExceptionFilter],
 })
-export class AppModule {}
+export class AppModule { }
