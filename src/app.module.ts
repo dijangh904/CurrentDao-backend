@@ -64,8 +64,9 @@ import { MarketSimulationModule } from './market-simulation/market-simulation.mo
     SyncModule,
     LoggingModule,
     SettingsModule,
+    CurrencyModule,
   ],
   controllers: [AppController, HealthController],
   providers: [AppService, ResponseInterceptor, HttpExceptionFilter],
 })
-export class AppModule {}
+export class AppModule { }
