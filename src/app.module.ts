@@ -31,7 +31,10 @@ import { PredictiveBalancingModule } from './balancing/predictive-balancing.modu
 import { SyncModule } from './sync/sync.module';
 import { LoggingModule } from './logging/logging.module';
 import { SettingsModule } from './settings/settings.module';
-import { CurrencyModule } from './currency/currency.module';
+import { ErrorHandlingModule } from './error-handling/error-handling.module';
+import { ComplianceModule } from './compliance/compliance.module';
+import { CacheModule } from './cache/cache.module';
+import { MarketSimulationModule } from './market-simulation/market-simulation.module';
 
 @Module({
   imports: [
@@ -40,6 +43,11 @@ import { CurrencyModule } from './currency/currency.module';
       isGlobal: true,
       load: [databaseConfig, stellarConfig],
     }),
+    ScheduleModule.forRoot(),
+    ErrorHandlingModule,
+    CacheModule,
+    ComplianceModule,
+    MarketSimulationModule,
     SecurityModule,
     ApmModule,
     TracingModule,
